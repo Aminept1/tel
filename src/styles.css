@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css'; */
+
+/* For our PrimeNG */
+
+@import "../node_modules/primeng/resources/themes/luna-green/theme.css";
+
+/* For DropDown icons */
+
+@import "~primeicons/primeicons.css";
+
+/* For arrow pagination icons */
+
+.pi-step-backward:before {
+  font-family: "Font Awesome 5 Free";
+  content: "..";
+}
+
+.pi-step-forward:before {
+  content: "..";
+}
+
+.pi-caret-left:before {
+  content: ".";
+}
+
+.pi-caret-right:before {
+  content: ".";
+}

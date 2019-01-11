@@ -1,0 +1,21 @@
+<div class="ui-g ui-g-nopad">
+    <div class="ui-g-2 ui-g-nopad" id="sidegutter">
+        <div id="sidenav">
+          <p-menu [model]="menuItems"></p-menu>
+        </div>
+    </div>
+</div>
+
+
+<!-- <p-sidebar [(visible)]="display">
+
+          <p-menu [model]="menuItems"></p-menu>
+
+
+</p-sidebar>  -->
+
+<!-- <button type="text" (click)="display = true" pButton icon="pi pi-plus" label="Show"></button>  -->
+
+<div id="content-body" class="ui-g-10 ui-g-nopad">
+<router-outlet></router-outlet>
+</div>
