@@ -10,6 +10,9 @@ import {SidebarModule} from 'primeng/sidebar';
 import {PaginatorModule} from 'primeng/paginator';
 import {DialogModule} from 'primeng/dialog';
 import {DropdownModule} from 'primeng/dropdown';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {CalendarModule} from 'primeng/calendar';
+
 import {MenuItem} from 'primeng/api';
 
 // CLI
@@ -65,6 +68,8 @@ import { HttpClientModule } from '@angular/common/http';
     DialogModule,
     SidebarModule,
     DropdownModule,
+    ProgressSpinnerModule,
+    CalendarModule, 
     MultiSelectModule,
     BrowserAnimationsModule,
     ButtonModule,

@@ -16,10 +16,9 @@ import { Client } from '../../models/models.client';
 export class ClientsService {
 
   private share =new BehaviorSubject<any>([]);
-  // private share =new BehaviorSubject<string>("HELLO");
   currentShare = this.share.asObservable();    
 
-  public host: string = "http://localhost:8085"; 
+  public host: string = "http://localhost:8093"; 
 
   constructor(private http: HttpClient) { }
 
@@ -37,11 +36,7 @@ export class ClientsService {
 
   changeShared(cs: any) {
     this.share.next(cs);
-    console.log("cs avnant");
-    console.log(cs);
-    console.log(cs);
-    console.log("cs apres");
-
+    console.log("changeShared Done");
   }
 
 }

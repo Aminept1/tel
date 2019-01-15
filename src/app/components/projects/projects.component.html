@@ -2,7 +2,7 @@
 
 <div class="container">
     <h1>Catalogues - Projets</h1>
-    <h1 *ngFor="let item of msg">{{item.name}}</h1>
+    <!-- <h1 *ngFor="let item of message">{{item.name}}</h1> -->
     <br>
     &nbsp;
     <button pButton type="button" label="Nouveau projet" icon="fa fa-plus" (click)="showDialogToAdd()"></button>
@@ -49,7 +49,7 @@
 
     </p-table>
 
-    <p-dialog header="Projet" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '500px'}">
+    <p-dialog header="Projet" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '800px', height:'800px'}">
             
             <div class="ui-g ui-fluid" *ngIf="project">
 
@@ -58,7 +58,7 @@
                         <label for="client">Client</label>
                     </div>
                     <div class="ui-g-8">
-                        <p-dropdown [options]="msg" [(ngModel)]="msg.name" placeholder="Choisissez un client" optionLabel="name" [showClear]="true"></p-dropdown>
+                        <p-dropdown [options]="message" [(ngModel)]="message.name" placeholder="Choisissez un client" optionLabel="name" [showClear]="true" [style]="{width: '350px'}"></p-dropdown>
 
                     </div>
                 </div>
@@ -68,16 +68,35 @@
                         <label for="name">Nom</label>
                     </div>
                     <div class="ui-g-8">
-                        <input pInputText id="name" [(ngModel)]="project.name" />
+                        <input pInputText id="name" size="47" [(ngModel)]="project.name" [style]="{width: '350px'}"/>
                     </div>
                 </div>
+
+                <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label for="name">Nom</label>
+                        </div>
+                        <div class="ui-g-8">
+                            <input pInputText id="name" size="47" [(ngModel)]="project.name" [style]="{width: '350px'}"/>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12">
+                            <div class="ui-g-4">
+                                <label for="name">Nom</label>
+                            </div>
+                            <div class="ui-g-8">
+                                <input pInputText id="name" size="47" [(ngModel)]="project.name" [style]="{width: '350px'}"/>
+                            </div>
+                        </div>
                   
                 <div class="ui-g-12">
                             <div class="ui-g-4">
                                 <label for="startDate">Date de démarrage</label>
                             </div>
                             <div class="ui-g-8">
-                                <input pInputText id="startDate" [(ngModel)]="project.startDate" />
+                                   
+                                    <p-calendar [(ngModel)]="date1" [style]="{width: '350px'}"></p-calendar>
                             </div>
                 </div>  
                         
@@ -86,16 +105,25 @@
                                     <label for="duration">Durée estimée</label>
                                 </div>
                                 <div class="ui-g-8">
-                                    <input pInputText id="duration" [(ngModel)]="project.duration" />
+                                    <input pInputText id="duration" size="47" [(ngModel)]="project.duration" [style]="{width: '350px'}"/>
                                 </div>
-                            </div>
+                        </div>
+
+                        <div class="ui-g-12">
+                                <div class="ui-g-4">
+                                    <label for="duration">Equipe</label>
+                                </div>
+                                <div class="ui-g-8">
+                                  <p-multiSelect [options]="cities1" [(ngModel)]="selectedCities1" [style]="{width: '350px'}" [defaultLabel]="Team"></p-multiSelect>
+                                </div>
+                        </div>   
                     
             </div>
 
             <p-footer>
                     <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                        <button type="button" pButton icon="fa fa-close" (click)="delete()" label="Delete" class="ui-button-danger"></button>
-                        <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
+                        <button type="button" pButton icon="fa fa-close" (click)="delete()" label="Supprimer" class="ui-button-danger"></button>
+                        <button type="button" pButton icon="fa fa-check" (click)="save()" label="Enregistrer"></button>
                     </div>
             </p-footer>
 

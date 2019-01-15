@@ -4,11 +4,14 @@ import { SortEvent } from "primeng/components/common/sortevent";
 import { PaginatorModule } from "primeng/paginator";
 import { DialogModule } from "primeng/dialog";
 
+
 import { Router } from "@angular/router";
 
 import { Project } from "../../../models/models.project";
 
 import { ClientsService } from '../../services/clients.service';
+
+import { Location } from '@angular/common';
 
 @Component({
   selector: "app-projects",
@@ -17,12 +20,13 @@ import { ClientsService } from '../../services/clients.service';
 })
 export class ProjectsComponent implements OnInit {
 
-
-  msg : any; 
   clients: any; 
-
+  message : any; 
+  
   star = 'fa fa-plus';
+
   //CRUD
+  
   displayDialog: boolean;
   project: Project;
   selectedProject: Project;
@@ -33,6 +37,15 @@ export class ProjectsComponent implements OnInit {
     { id:2, name: 'bbbbb', groupe: 'zzzzz App', nombreprojets: 2, nombretaches: 1000},
 
   ];
+
+  selectedCities1: any;
+  cities1 = [
+    {label:'New York', value:{id:1, name: 'New York', code: 'NY'}},
+    {label:'Rome', value:{id:2, name: 'Rome', code: 'RM'}},
+    {label:'London', value:{id:3, name: 'London', code: 'LDN'}},
+    {label:'Istanbul', value:{id:4, name: 'Istanbul', code: 'IST'}},
+    {label:'Paris', value:{id:5, name: 'Paris', code: 'PRS'}}
+];
 
 
   projects = [
@@ -70,7 +83,7 @@ export class ProjectsComponent implements OnInit {
   constructor(private router: Router, private clientsService : ClientsService) {}
 
   ngOnInit() {
-    this.clientsService.currentShare.subscribe(m => this.msg = m);   
+    this.clientsService.currentShare.subscribe(m => this.message = m);   
   }
 
   customSort(event: SortEvent) {
@@ -153,5 +166,9 @@ export class ProjectsComponent implements OnInit {
     }
     return project;
   }
+
+
+
+
 
 }

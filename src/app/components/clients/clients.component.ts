@@ -3,6 +3,8 @@ import {TableModule} from 'primeng/table';
 import { SortEvent } from 'primeng/components/common/sortevent';
 import {PaginatorModule} from 'primeng/paginator';
 import {DialogModule} from 'primeng/dialog';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+
 
 import { Router } from '@angular/router'; 
 import { Http } from '@angular/http'; 
@@ -16,7 +18,7 @@ import { ClientsService } from '../../services/clients.service';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
-
+  refrechTrigger : boolean; 
   msg : any; 
 
    //CRUD
@@ -30,8 +32,8 @@ export class ClientsComponent implements OnInit {
   cols = [
     { field: 'name', header: 'Nom' },
     { field: 'groupe', header: 'Groupe' },
-    { field: 'nb_projects', header: 'N. Projets' },
-    { field: 'nb_tasks', header: 'N. Taches' },
+    { field: 'nbPprojects', header: 'N. Projets' },
+    { field: 'nbTasks', header: 'N. Taches' },
   ];
 
   constructor(private router: Router, private http: Http, private clientsService : ClientsService) { }
@@ -39,9 +41,6 @@ export class ClientsComponent implements OnInit {
   ngOnInit() {
 
     this.OnLoadClients(); 
-    // console.log("yyyyyyyyyyyyyyy");
-    // console.log(this.clients);
-    // this.newMessage();
 
   }
 
@@ -49,7 +48,7 @@ export class ClientsComponent implements OnInit {
 
     this.clientsService.getClients()
     .subscribe(
-      data => {this.clients = data ; this.newMessage(); console.log("Done");},
+      data => {this.clients = data ; console.log("------------------------"); console.log(data);},
       err  => {console.log(err);}
     )
   }
@@ -83,12 +82,12 @@ export class ClientsComponent implements OnInit {
 
   showDialogToAdd() {
     this.newClient = true;
-    this.client = {id:null, name: '', groupe: '', nb_projects: null, nb_tasks: null};;
+    this.client = {id:null, name: '', groupe: '', nbPprojects: null, nbTasks: null, nbUnderTasks: null, projects: null};;
     this.displayDialog = true;
   }
 
   save() {
-    let cars = [...this.clients];
+    let repository = [...this.clients];
     if (this.newClient){
         console.log(this.client);
         this.clientsService.saveClient(this.client)
@@ -114,19 +113,18 @@ delete() {
           data => {console.log("Delete OK");this.OnLoadClients();},
           err  => {console.log("Delete KO");}
         )
-    //this.client = null;
     this.displayDialog = false;
 }
 
 onRowSelect(event) {
     this.selectedClient = event.data; 
     this.newClient = false;
-    this.client = this.cloneCar(event.data);
+    this.client = this.cloneClient(event.data);
     this.displayDialog = true;
 }
 
-cloneCar(c: Client): Client {
-    let client = {id: null, name: '', groupe: '', nb_projects: null, nb_tasks: null};
+cloneClient(c: Client): Client {
+    let client = {id:null, name: '', groupe: '', nbPprojects: null, nbTasks: null, nbUnderTasks: null, projects: null};
     for (let prop in c) {
       client[prop] = c[prop];
     }
@@ -136,6 +134,23 @@ cloneCar(c: Client): Client {
 newMessage() {
   this.clientsService.changeShared(this.clients); 
 }
+
+async  refreche() {
+  
+  console.log("wait");
+  this.refrechTrigger = true;
+  await this.sleep(1000);   
+  location.reload();
+  console.log("ref");
+  
+}
+
+
+
+   sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 
 }

@@ -15,18 +15,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = [
-      {label: 'Dashboard', icon: 'fa fa-home', routerLink: ['/login']},
-      {label: 'Clients', icon: 'fa fa-tasks', routerLink: ['/clients']},
-      {label: 'Projets', icon: 'fa fa-tasks', routerLink: ['/projects']},
+      {label: 'Tatouer', icon: 'fa fa-thumb-tack', routerLink: ['/login']},
+      {},
+      {label: 'Clients', icon: 'fa fa-handshake-o', routerLink: ['/clients']},
+      {label: 'Projets', icon: 'fa fa-briefcase', routerLink: ['/projects']},
       {label: 'Tâches', icon: 'fa fa-tasks', routerLink: ['/tasks']},
-      {label: 'Opérations', icon: 'fa fa-tasks', routerLink: ['/operations']},
+      {label: 'Opérations', icon: 'fa fa-bug', routerLink: ['/operations']},
       {},
       {label: 'Plannings', icon: 'fa fa-calendar', routerLink: ['/settings']},
-      {label: 'Timesheet', icon: 'fa fa-clock-o', routerLink: ['/timesheet']}, 
-      {label: 'Settings', icon: 'fa fa-sliders', routerLink: ['/settings']},
+      {label: 'Timesheet', icon: 'fa fa-clock-o', routerLink: ['/timesheet']},
+      {label: 'Dashboard', icon: 'fa fa-bar-chart', routerLink: ['/login']}, 
       {label: 'Equipes', icon: 'fa fa-users', routerLink: ['/profile']},
+      {label: 'Settings', icon: 'fa fa-sliders', routerLink: ['/settings']},
       {},
-      {label: 'Déconnexion', icon: 'fa fa-sliders', routerLink: ['/settings']},
+      {label: 'Déconnexion', icon: 'fa fa-sign-out', routerLink: ['/settings']},
     ]
   }
 

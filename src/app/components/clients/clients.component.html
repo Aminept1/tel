@@ -4,8 +4,12 @@
     <h1>Espace clients</h1>
     <br>
     &nbsp;
-    <button pButton type="button" label="Nouveau client" icon="fa fa-plus" (click)="showDialogToAdd()"></button>
-</div>
+    <div class="container">
+        <button pButton type="button" label="Nouveau client" icon="fa fa-plus" (click)="showDialogToAdd()" class="mr-2"></button>
+        <button pButton type="button" icon="fa fa-refresh" (click)="refreche()" class="mr-2"></button>
+        <p-progressSpinner [style]="{width: '20px', height: '20px'}" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s" *ngIf="refrechTrigger"></p-progressSpinner>
+    </div>
+</div> 
 
 <div class="container">
 
@@ -72,7 +76,7 @@
                                 <label nom="nombreprojets">Nb. Projets</label>
                             </div>
                             <div class="ui-g-8">
-                                <input pInputText id="nombreprojets" [(ngModel)]="client.nb_projects" />
+                                <input pInputText id="nombreprojets" [(ngModel)]="client.nbPprojects" />
                             </div>
                 </div>  
                         
@@ -81,7 +85,7 @@
                                     <label nom="nombretaches">Nb. Taches</label>
                                 </div>
                                 <div class="ui-g-8">
-                                    <input pInputText id="nombretaches" [(ngModel)]="client.nb_tasks" />
+                                    <input pInputText id="nombretaches" [(ngModel)]="client.nbTasks" />
                                 </div>
                             </div>
                     
@@ -89,8 +93,8 @@
 
             <p-footer>
                     <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                        <button type="button" pButton icon="fa fa-close" (click)="delete()" label="Delete"></button>
-                        <button type="button" pButton icon="fa fa-check" (click)="save()" label="Save"></button>
+                        <button type="button" pButton icon="fa fa-close" (click)="delete()" label="Supprimer" class="ui-button-danger"></button>
+                        <button type="button" pButton icon="fa fa-check" (click)="save()" label="Enregistrer"></button>
                     </div>
             </p-footer>
 

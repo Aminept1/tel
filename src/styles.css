@@ -28,3 +28,32 @@
 .pi-caret-right:before {
   content: ".";
 }
+
+/* For Spinner */
+
+.spacerSpinner {
+  margin-top: 30px; 
+}
+
+/* For Spinner */
+
+@keyframes ui-progress-spinner-color {
+  100%,
+  0% {
+      stroke: #008744;
+  }
+  40% {
+      stroke: #008744;
+  }
+  66% {
+      stroke: #008744;
+  }
+  80%,
+  90% {
+      stroke: #008744;
+  }
+
+
+
+
+}

@@ -2,6 +2,8 @@ export class Client {
     public id : number; 
     public name : string=""; 
     public groupe:string=""; 
-    public nb_projects : number =0; 
-    public nb_tasks : number =0; 
+    public nbPprojects : number =0; 
+    public nbTasks : number =0; 
+    public nbUnderTasks : number=0; 
+    public projects : any = null; 
 } 
