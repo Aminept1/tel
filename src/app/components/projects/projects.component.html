@@ -2,10 +2,11 @@
 
 <div class="container">
     <h1>Catalogues - Projets</h1>
-    <!-- <h1 *ngFor="let item of message">{{item.name}}</h1> -->
     <br>
     &nbsp;
-    <button pButton type="button" label="Nouveau projet" icon="fa fa-plus" (click)="showDialogToAdd()"></button>
+    <button pButton type="button" label="Nouveau projet" icon="fa fa-plus" (click)="showDialogToAdd()" class="mr-2"></button>
+    <button pButton type="button" icon="fa fa-refresh" (click)="refreche()" class="mr-2"></button>
+    <p-progressSpinner [style]="{width: '20px', height: '20px'}" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s" *ngIf="refrechTrigger"></p-progressSpinner>
 </div>
 
 <div class="container">
@@ -64,31 +65,23 @@
                 </div>
 
                 <div class="ui-g-12">
+                        <div class="ui-g-4">
+                            <label for="duration">Equipe</label>
+                        </div>
+                        <div class="ui-g-8">
+                          <p-multiSelect [options]="cities1" [(ngModel)]="selectedCities1"  [defaultLabel]="Team"></p-multiSelect>
+                        </div>
+                </div> 
+
+                <div class="ui-g-12">
                     <div class="ui-g-4">
-                        <label for="name">Nom</label>
+                        <label for="name">Libellé</label>
                     </div>
                     <div class="ui-g-8">
-                        <input pInputText id="name" size="47" [(ngModel)]="project.name" [style]="{width: '350px'}"/>
+                        <input pInputText id="name" size="47" [(ngModel)]="project.name" />
                     </div>
                 </div>
 
-                <div class="ui-g-12">
-                        <div class="ui-g-4">
-                            <label for="name">Nom</label>
-                        </div>
-                        <div class="ui-g-8">
-                            <input pInputText id="name" size="47" [(ngModel)]="project.name" [style]="{width: '350px'}"/>
-                        </div>
-                    </div>
-
-                    <div class="ui-g-12">
-                            <div class="ui-g-4">
-                                <label for="name">Nom</label>
-                            </div>
-                            <div class="ui-g-8">
-                                <input pInputText id="name" size="47" [(ngModel)]="project.name" [style]="{width: '350px'}"/>
-                            </div>
-                        </div>
                   
                 <div class="ui-g-12">
                             <div class="ui-g-4">
@@ -96,27 +89,49 @@
                             </div>
                             <div class="ui-g-8">
                                    
-                                    <p-calendar [(ngModel)]="date1" [style]="{width: '350px'}"></p-calendar>
+                                    <p-calendar [(ngModel)]="date1" [showIcon]="true"></p-calendar>
                             </div>
                 </div>  
                         
-                        <div class="ui-g-12">
-                                <div class="ui-g-4">
-                                    <label for="duration">Durée estimée</label>
-                                </div>
-                                <div class="ui-g-8">
-                                    <input pInputText id="duration" size="47" [(ngModel)]="project.duration" [style]="{width: '350px'}"/>
-                                </div>
-                        </div>
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                         <label for="duration">Durée estimée (en jours)</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <p-spinner size="30" [(ngModel)]="project.duration" [step]="0.125" [style]="{width: '350px'}"></p-spinner>
+                     </div>
+                </div>
 
-                        <div class="ui-g-12">
-                                <div class="ui-g-4">
-                                    <label for="duration">Equipe</label>
-                                </div>
-                                <div class="ui-g-8">
-                                  <p-multiSelect [options]="cities1" [(ngModel)]="selectedCities1" [style]="{width: '350px'}" [defaultLabel]="Team"></p-multiSelect>
-                                </div>
-                        </div>   
+                <div class="ui-g-12">
+                        <div class="ui-g-4">
+                             <label for="duration">RAF T.(en jours)</label>
+                        </div>
+                        <div class="ui-g-8">
+                            <p-spinner size="30" [(ngModel)]="project.duration" [step]="0.125" [style]="{width: '350px'}"></p-spinner>
+                         </div>
+                </div>
+
+                <div class="ui-g-12">
+                        <div class="ui-g-4">
+                             <label for="duration">RAF R.(en jours)</label>
+                        </div>
+                        <div class="ui-g-8">
+                            <p-spinner size="30" [(ngModel)]="project.duration" [step]="0.125" [style]="{width: '350px'}"></p-spinner>
+                         </div>
+                </div>
+
+                <div class="ui-g-12">
+                        <div class="ui-g-4">
+                             <label for="duration">Statut (ouvert/fermé)</label>
+                        </div>
+                        <div class="ui-g-8">
+                             <p-inputSwitch [(ngModel)]="openClose"></p-inputSwitch>
+                         </div>
+                    </div>
+
+                
+
+  
                     
             </div>
 

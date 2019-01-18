@@ -35,6 +35,10 @@
   margin-top: 30px; 
 }
 
+.ui-spinner {
+	vertical-align: middle\9;
+}
+
 /* For Spinner */
 
 @keyframes ui-progress-spinner-color {
@@ -53,7 +57,9 @@
       stroke: #008744;
   }
 
-
+.ui-spinner {
+	vertical-align: middle\9;
+}
 
 
 }

@@ -20,8 +20,13 @@ import { Location } from '@angular/common';
 })
 export class ProjectsComponent implements OnInit {
 
+  refrechTrigger : boolean;
+  msg : any;  
+
   clients: any; 
   message : any; 
+
+  openClose: boolean =true; 
   
   star = 'fa fa-plus';
 
@@ -167,7 +172,15 @@ export class ProjectsComponent implements OnInit {
     return project;
   }
 
+  async refreche() {
+  this.refrechTrigger = true;
+  await this.sleep(1000);   
+  location.reload();  
+  }
 
+  sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
 
 

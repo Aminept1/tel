@@ -4,11 +4,9 @@
     <h1>Espace clients</h1>
     <br>
     &nbsp;
-    <div class="container">
-        <button pButton type="button" label="Nouveau client" icon="fa fa-plus" (click)="showDialogToAdd()" class="mr-2"></button>
+        <button pButton type="button" label="Nouveau client" icon="fa fa-plus" (click)="showDialogToAdd() ; switch()" class="mr-2"></button>
         <button pButton type="button" icon="fa fa-refresh" (click)="refreche()" class="mr-2"></button>
         <p-progressSpinner [style]="{width: '20px', height: '20px'}" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s" *ngIf="refrechTrigger"></p-progressSpinner>
-    </div>
 </div> 
 
 <div class="container">
@@ -27,8 +25,6 @@
                     {{col.header}} &nbsp;
                     <i class="fa fa-sort"></i>
                 </th>
-                <th>Plus</th>
-                <!-- <th>Opérations</th> -->
             </tr>
         </ng-template>
 
@@ -37,12 +33,6 @@
                 <td *ngFor="let col of cols">
                         {{entry[col.field]}}
                 </td>
-                <td>
-                        <button pButton type="button" icon="fa fa-pencil-square" label="Projet" class="ui-button-rounded" (click)="newProject()"></button>
-                </td>
-                <!-- <td>
-                        <button pButton type="button" icon="fa fa-pencil-square" class="ui-button-primary"></button>
-                </td> -->
             </tr>
         </ng-template>
 
@@ -52,50 +42,41 @@
 
     <p-dialog header="Client" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '500px'}">
             
+            <form novalidate #fo="ngForm" (ngSubmit)="onSubmit(fo)">
+
             <div class="ui-g ui-fluid" *ngIf="client">
-                <div class="ui-g-12">
+                <div class="ui-g-12 form-group">
                     <div class="ui-g-4">
-                        <label nom="nom">Nom</label>
+                        <label for="name">Nom</label>
                     </div>
                     <div class="ui-g-8">
-                        <input pInputText id="nom" [(ngModel)]="client.name" />
+                        <input type="text" pInputText id="name" name="name" [(ngModel)]="client.name" #myName="ngModel" required/>
                     </div>
+
                 </div>
 
-                <div class="ui-g-12">
+                <div class="ui-g-12 form-group">
                         <div class="ui-g-4">
-                            <label nom="groupe">Groupe</label>
+                            <label for="groupe">Groupe</label>
                         </div>
                         <div class="ui-g-8">
-                            <input pInputText id="groupe" [(ngModel)]="client.groupe" />
+                            <input type="text" pInputText id="groupe" name="groupe" [(ngModel)]="client.groupe"  #myGroupe="ngModel" required/>
                         </div>
                 </div>
-                    
-                <div class="ui-g-12">
-                            <div class="ui-g-4">
-                                <label nom="nombreprojets">Nb. Projets</label>
-                            </div>
-                            <div class="ui-g-8">
-                                <input pInputText id="nombreprojets" [(ngModel)]="client.nbPprojects" />
-                            </div>
-                </div>  
-                        
-                        <div class="ui-g-12">
-                                <div class="ui-g-4">
-                                    <label nom="nombretaches">Nb. Taches</label>
-                                </div>
-                                <div class="ui-g-8">
-                                    <input pInputText id="nombretaches" [(ngModel)]="client.nbTasks" />
-                                </div>
-                            </div>
-                    
+
+                <div class="ui-g-12 form-group">
+                    <p-message class="ui-g-12" *ngIf="myName.errors?.required && myName.touched || myGroupe.errors?.required && myGroupe.touched" severity="error" text="Champ(s) obligatoire(s) non renseigné(s) !"></p-message>
+                </div>
+                                     
             </div>
+
+            </form>
 
             <p-footer>
                     <div class="ui-dialog-buttonpane ui-helper-clearfix">
-                        <button type="button" pButton icon="fa fa-close" (click)="delete()" label="Supprimer" class="ui-button-danger"></button>
-                        <button type="button" pButton icon="fa fa-check" (click)="save()" label="Enregistrer"></button>
-                    </div>
+                            <button pButton type="button" label="Supprimer" class="ui-button-danger" (click)="delete()" [disabled]="newEntity"></button>
+                            <button pButton type="button" label="Enregistrer" class="ui-button-primary" (click)="save()" [disabled]="!fo.valid"></button> 
+                    </div> 
             </p-footer>
 
     </p-dialog>

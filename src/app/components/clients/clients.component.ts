@@ -28,12 +28,14 @@ export class ClientsComponent implements OnInit {
   selectedClient: Client;
   newClient: boolean;
   clients: any; 
+  newEntity: boolean = false;  
 
   cols = [
     { field: 'name', header: 'Nom' },
     { field: 'groupe', header: 'Groupe' },
     { field: 'nbPprojects', header: 'N. Projets' },
     { field: 'nbTasks', header: 'N. Taches' },
+    { field: 'nbUnderTasks', header: 'N. Sous-taches' },
   ];
 
   constructor(private router: Router, private http: Http, private clientsService : ClientsService) { }
@@ -74,15 +76,11 @@ export class ClientsComponent implements OnInit {
     });
   }
 
-  newProject() {
-    this.router.navigateByUrl('/login');
-  }
-
   // CRUD
 
   showDialogToAdd() {
     this.newClient = true;
-    this.client = {id:null, name: '', groupe: '', nbPprojects: null, nbTasks: null, nbUnderTasks: null, projects: null};;
+    this.client = {id:null, name: '', groupe: 'AUCUN'};
     this.displayDialog = true;
   }
 
@@ -107,50 +105,47 @@ export class ClientsComponent implements OnInit {
         }             
 }
 
-delete() {
+  delete() {
      this.clientsService.deleteClient(this.client.id)
         .subscribe(
           data => {console.log("Delete OK");this.OnLoadClients();},
           err  => {console.log("Delete KO");}
         )
     this.displayDialog = false;
-}
+  }
 
-onRowSelect(event) {
+  onRowSelect(event) {
     this.selectedClient = event.data; 
     this.newClient = false;
     this.client = this.cloneClient(event.data);
     this.displayDialog = true;
-}
+    this.newEntity = false;
+  }
 
-cloneClient(c: Client): Client {
-    let client = {id:null, name: '', groupe: '', nbPprojects: null, nbTasks: null, nbUnderTasks: null, projects: null};
+  cloneClient(c: Client): Client {
+    let client = {id: null, name: '', groupe: ''};
     for (let prop in c) {
       client[prop] = c[prop];
     }
     return client;
-}
+  }
 
-newMessage() {
+  newMessage() {
   this.clientsService.changeShared(this.clients); 
-}
+  }
 
-async  refreche() {
-  
-  console.log("wait");
+  async refreche() {
   this.refrechTrigger = true;
   await this.sleep(1000);   
-  location.reload();
-  console.log("ref");
-  
+  location.reload();  
 }
 
-
-
-   sleep(ms) {
+  sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
+switch() {
+  this.newEntity = true;
+}
 
 }

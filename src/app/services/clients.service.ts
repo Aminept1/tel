@@ -18,7 +18,7 @@ export class ClientsService {
   private share =new BehaviorSubject<any>([]);
   currentShare = this.share.asObservable();    
 
-  public host: string = "http://localhost:8093"; 
+  public host: string = "http://localhost:8056"; 
 
   constructor(private http: HttpClient) { }
 

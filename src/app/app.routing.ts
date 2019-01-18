@@ -5,11 +5,11 @@ import {LoginComponent} from './components/login/login.component';
 import {HomeComponent} from './components/home/home.component';
 import {SettingsComponent} from './components/settings/settings.component';
 import {ClientsComponent} from './components/clients/clients.component';
-import {NewClientComponent} from './components/new-client/new-client.component';
 import {ProjectsComponent} from './components/projects/projects.component';
-import {NewProjectComponent} from './components/new-project/new-project.component';
 import {TasksComponent} from './components/tasks/tasks.component';
-import {NewTaskComponent} from './components/new-task/new-task.component';
+import {CollaboratorsComponent} from './components/collaborators/collaborators.component';
+import {TagsComponent} from './components/tags/tags.component';
+import {UnderTasksComponent} from './components/under-tasks/under-tasks.component';
 
 const appRoutes: Routes = [
 	{
@@ -26,6 +26,10 @@ const appRoutes: Routes = [
 		component: HomeComponent
 	},
 	{
+		path: 'tags',
+		component: TagsComponent
+	},
+	{
 		path: 'clients',
 		component: ClientsComponent
 	},
@@ -36,6 +40,14 @@ const appRoutes: Routes = [
 	{
 		path: 'tasks',
 		component: TasksComponent
+	},
+	{
+		path: 'underTasks',
+		component: UnderTasksComponent
+	},
+	{
+		path: 'collaborators',
+		component: CollaboratorsComponent
 	},
 	{
 		path: 'settings',

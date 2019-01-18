@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+//import {Validators,FormControl,FormGroup,FormBuilder} from '@angular/forms';
 
 // PrimeNG Moduls
 import {MenuModule, PanelModule, DataTableModule} from 'primeng/primeng';
@@ -12,6 +13,12 @@ import {DialogModule} from 'primeng/dialog';
 import {DropdownModule} from 'primeng/dropdown';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {CalendarModule} from 'primeng/calendar';
+import {InputTextModule} from 'primeng/inputtext';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {SpinnerModule} from 'primeng/spinner';
+
 
 import {MenuItem} from 'primeng/api';
 
@@ -31,11 +38,8 @@ import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { HomeComponent } from './components/home/home.component';
 import { ClientsComponent } from './components/clients/clients.component';
-import { NewClientComponent } from './components/new-client/new-client.component';
 import { ProjectsComponent } from './components/projects/projects.component';
-import { NewProjectComponent } from './components/new-project/new-project.component';
 import { TasksComponent } from './components/tasks/tasks.component';
-import { NewTaskComponent } from './components/new-task/new-task.component';
 
 // SERVICES
 import { LoginService } from './services/login.service';
@@ -43,6 +47,9 @@ import { ClientsService } from './services/clients.service';
 
 // rxjs
 import { HttpClientModule } from '@angular/common/http';
+import { TagsComponent } from './components/tags/tags.component';
+import { CollaboratorsComponent } from './components/collaborators/collaborators.component';
+import { UnderTasksComponent } from './components/under-tasks/under-tasks.component';
 
 @NgModule({
   declarations: [
@@ -51,11 +58,11 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     HomeComponent,
     ClientsComponent,
-    NewClientComponent,
     ProjectsComponent,
-    NewProjectComponent,
     TasksComponent,
-    NewTaskComponent
+    TagsComponent,
+    CollaboratorsComponent,
+    UnderTasksComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +78,11 @@ import { HttpClientModule } from '@angular/common/http';
     ProgressSpinnerModule,
     CalendarModule, 
     MultiSelectModule,
+    InputTextModule,
+    MessagesModule,
+    MessageModule,
+    InputSwitchModule,
+    SpinnerModule,
     BrowserAnimationsModule,
     ButtonModule,
     HttpModule,
